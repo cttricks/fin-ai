@@ -20,9 +20,9 @@ type AIProvider interface {
 func NewProvider(provider, apiKey string) (AIProvider, error) {
 	switch provider {
 	case ProviderOpenAI:
-		return openai.New(apiKey)
+		return openai.New(apiKey, SystemPrompt())
 	case ProviderGemini:
-		return gemini.New(apiKey)
+		return gemini.New(apiKey, SystemPrompt())
 	default:
 		return nil, errors.New("unknown AI provider")
 	}

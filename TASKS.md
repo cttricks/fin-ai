@@ -2,16 +2,16 @@
 
 ## Phase 1 - Core
 
-- [ ] Initialize Go module
-- [ ] Setup CLI using cobra
-- [ ] Implement config storage
-- [ ] Implement OpenAI provider
-- [ ] Implement Gemini provider
-- [ ] Implement AIProvider interface
-- [ ] Create HTTP server
-- [ ] Implement / endpoint
-- [ ] Add redirect logic
-- [ ] Add error fallback to raw search
+- [x] Initialize Go module
+- [x] Setup CLI using cobra
+- [x] Implement config storage
+- [x] Implement OpenAI provider
+- [x] Implement Gemini provider
+- [x] Implement AIProvider interface
+- [x] Create HTTP server
+- [x] Implement / endpoint
+- [x] Add redirect logic
+- [x] Add error fallback to raw search
 
 ## Phase 2 - Stability
 

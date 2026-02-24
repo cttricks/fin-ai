@@ -65,8 +65,15 @@ func (s *Server) handleRedirect(w http.ResponseWriter, r *http.Request) {
 
 	optimized, err := s.provider.OptimizeQuery(r.Context(), raw)
 	if err != nil || optimized == "" {
-		optimized = raw
+		http.Redirect(w, r, buildSearchURL(raw), http.StatusFound)
+		return
 	}
 
-	http.Redirect(w, r, buildSearchURL(optimized), http.StatusFound)
+	parsed, parseErr := ai.ParseRouterResponse(optimized)
+	if parseErr != nil || parsed.Query == "" {
+		http.Redirect(w, r, buildSearchURL(optimized), http.StatusFound)
+		return
+	}
+
+	http.Redirect(w, r, buildSearchURL(parsed.Query), http.StatusFound)
 }

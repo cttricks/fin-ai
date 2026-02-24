@@ -4,7 +4,7 @@ fin is a lightweight, local-first AI utility that enhances search precision.
 
 # Architecture
 
-Browser → Local HTTP Server → AI Provider → Redirect
+Browser -> Local HTTP Server -> AI Provider -> Redirect
 
 # Core Modules
 
@@ -27,6 +27,11 @@ Browser → Local HTTP Server → AI Provider → Redirect
 - Must start under 100ms (excluding AI call)
 - AI call timeout: 10 seconds max
 - Fail gracefully to raw search if AI fails
+
+# Current Status (2026-02-24)
+
+- CLI, config storage, AI provider interface, HTTP server, and redirect logic are in place.
+- OpenAI and Gemini providers now call real APIs with strict JSON output parsing.
 
 # Future Ideas
 
