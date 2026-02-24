@@ -1,0 +1,8 @@
+# Folders
+.trash
+.vscode
+
+
+# Files
+.env
+config.json

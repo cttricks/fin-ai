@@ -1,0 +1,27 @@
+# LLM Integration Context
+
+## OpenAI
+
+Use official Go SDK:
+github.com/openai/openai-go
+
+Use ChatCompletion API.
+Model: gpt-4o-mini (or configurable)
+
+Temperature: 0.2
+Max tokens: 50
+
+## Gemini
+
+Use official Gemini Go SDK.
+Model: gemini-1.5-flash
+
+Temperature: 0.2
+Max output tokens: 50
+
+## Prompt Template
+
+You are a search query optimizer.
+Convert user intent into concise, optimized Google search query.
+Return only the search string.
+No explanation.

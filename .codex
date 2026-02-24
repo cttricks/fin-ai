@@ -1,0 +1,76 @@
+# Codex System Instructions for fin
+
+You are contributing to a Go-based CLI + local HTTP service project named "fin".
+
+## Project Purpose
+fin is a local AI-powered search intent optimizer.
+It runs a local HTTP server and converts natural language queries into optimized Google search URLs using LLM APIs (OpenAI or Gemini).
+
+## Coding Standards
+
+- Language: Go 1.22+
+- Follow idiomatic Go practices.
+- Prefer standard library unless external dependency is justified.
+- Keep dependencies minimal.
+- Use clean architecture principles.
+- Use dependency injection where appropriate.
+- No global mutable state unless absolutely necessary.
+- Errors must be wrapped with context.
+- Avoid magic strings.
+- All config must be centralized under internal/config.
+
+## CLI Requirements
+
+Commands:
+- fin run -p <port>
+- fin -v | version
+- fin -h | help
+- fin -ai openai|gemini -api "<key>"
+
+Use:
+- github.com/spf13/cobra (preferred)
+OR standard flag package if simpler.
+
+## AI Integration Rules
+
+- AI must only return optimized search query.
+- No explanation text.
+- Use deterministic settings (low temperature).
+- Prompt must enforce strict output format.
+
+## Security Constraints
+
+- Never hardcode API keys.
+- API keys must be stored in local config file under user home directory.
+- Do not log API keys.
+- No telemetry unless explicitly added later.
+
+## Architecture Guidelines
+
+- Provider abstraction layer required.
+- Define interface:
+
+type AIProvider interface {
+    OptimizeQuery(ctx context.Context, input string) (string, error)
+}
+
+- OpenAI and Gemini must implement this interface.
+
+## HTTP Behavior
+
+GET /?text=<query>
+
+Response:
+- 302 redirect to https://google.com/search?q=<optimized_query>
+
+## Logging
+
+- Use structured logging.
+- Minimal logs in production mode.
+
+## Code Philosophy
+
+- Keep functions small.
+- Single responsibility.
+- Avoid premature abstraction.
+- Prefer clarity over cleverness.
